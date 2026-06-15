@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../auth/useAuth'
 
 const TABS = [
+  { to: '/find', label: 'Find', icon: '🔍' },
+  { to: '/post', label: 'Post', icon: '➕' },
   { to: '/account', label: 'Account', icon: '👤' },
 ]
 
