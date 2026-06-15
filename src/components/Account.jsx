@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { food as foodApi, forum as forumApi } from '../api/client'
 import { useAuth } from '../auth/useAuth'
+import { locationLabel } from '../foodUtils'
 
 export default function Account() {
   const { email, userId } = useAuth()

@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { useAuth } from './auth/useAuth'
 import Login from './components/Login'
 import Nav from './components/Nav'
+import FindFood from './components/FindFood'
 import Account from './components/Account'
 
 export default function App() {
@@ -25,7 +26,9 @@ export default function App() {
 
       <main className="flex-1 px-4 pb-32 pt-5">
         <Routes>
+          <Route path="/find" element={<FindFood />} />
           <Route path="/account" element={<Account />} />
+          <Route path="*" element={<Navigate to="/find" replace />} />
         </Routes>
       </main>
 
