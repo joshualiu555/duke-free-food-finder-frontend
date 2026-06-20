@@ -1,16 +1,79 @@
-# React + Vite
+# Duke Free Food Finder - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A TypeScript + React frontend that powers Duke Free Food Finder, a website for Duke students to find and give away free food, reducing food insecurity and waste.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Passwordless auth** — Email a 6-digit verification code via [Resend](https://resend.com) restricted to `@duke.edu` addresses.
+- **Food postings** — Title, description, location (lat/lon), location details, expiration time, and an image. User can look through a food list or a map. 
+- **Forums** — Comment section attached to each food post.
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React + React Router 
+- Vite for development server and builds
+- Tailwind CSS for styling
+- React Leaflet for the map
+- jwt-decode for reading the auth token
+- Deployed on Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 18+ and npm
+- A running instance of the backend API
+
+### Install
+
+```bash
+npm install
+```
+
+### Configure
+
+The frontend reads the backend URL from `VITE_API_BASE_URL`. Create a `.env.local` file:
+
+```bash
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+If unset, it falls back to the deployed backend URL defined in [src/config.js](src/config.js).
+
+### Run
+
+```bash
+npm run dev      # starts the dev server
+npm run build    # production build to dist/
+```
+
+The dev server runs at default `http://localhost:5173`.
+
+## Project Structure
+
+```
+src/
+  api/client.js        
+  auth/               
+  components/
+    Login.jsx         
+    FindFood.jsx       
+    FoodList.jsx      
+    FoodMap.jsx      
+    FoodDetail.jsx     
+    PostFood.jsx      
+    Account.jsx        
+    Nav.jsx         
+  config.js            API base URL, Duke coordinates, image URL helper
+  foodUtils.js         display helpers 
+  leafletSetup.js      
+  App.jsx              
+  main.jsx            
+```
+
+## Deployment
+
+Configured for Vercel. 
+
+Set up `vercel.json`. Set `VITE_API_BASE_URL` as an environment variable in your Vercel project settings.
